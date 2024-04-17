@@ -1,5 +1,7 @@
 package com.example.pi_projet.services;
 
+import com.example.pi_projet.entities.Groupe;
+import com.example.pi_projet.repositories.GroupeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import com.example.pi_projet.repositories.RendezVousRepository;
 @AllArgsConstructor
 public class RendezVousImplementation implements IRendezVousService {
     RendezVousRepository rendezVousRepository;
+    GroupeRepository groupeRepository;
     @Override
     public RendezVous addRDV(RendezVous rendezVous) {
         return rendezVousRepository.save(rendezVous);
@@ -71,5 +74,18 @@ public class RendezVousImplementation implements IRendezVousService {
         }
 
         return heuresDisponibles;
+    }
+
+    @Override
+    public RendezVous AssignRdvToGroupe(Long idRdv, Long idGroupe) {
+        RendezVous rdv = rendezVousRepository.findByIdRdv(idRdv);
+        Groupe groupe = groupeRepository.findGroupesByIdGroupe(idGroupe);
+
+        if (rdv != null) {
+            rdv.setGroupe(groupe);
+            rendezVousRepository.save(rdv);
+
+        }
+        return rdv;
     }
 }

@@ -20,4 +20,6 @@ public interface IGroupeService {
     List<Groupe> ListGroupeByAnneScolaireI (Year Annee_Scolaire);
 
     Groupe AssignUserTOGroupe(Long idUser, Long idGroupe);
+
+
 }

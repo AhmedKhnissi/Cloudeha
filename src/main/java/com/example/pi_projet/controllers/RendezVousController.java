@@ -69,4 +69,9 @@ public class RendezVousController {
         return rendezVousService.heuresDisponibles(parsedDate);
     }
 
+    @PostMapping("/AssignRdvToGroupe/{idRdv}/{idGroupe}")
+
+    public RendezVous AssignRdvToGroupe(@PathVariable Long idRdv , @PathVariable Long idGroupe){
+        return  rendezVousService.AssignRdvToGroupe(idRdv,idGroupe);
+    }
 }

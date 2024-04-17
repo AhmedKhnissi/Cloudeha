@@ -61,6 +61,14 @@ public class GroupeImplementation implements IGroupeService{
         if (user != null && groupe != null) {
             user.getGroupeSet().add(groupe);
             groupe.getUserSet().add(user);
+            if (user.getUserRole().getRole().name().equals("Tuteur"))
+            {groupe.setNom_Tuteur(user.getUserRole().getRole().name());}
+
+
+
+
+            userRepository.save(user);
+            groupeRepository.save(groupe);
             return groupe;
         }
         else

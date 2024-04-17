@@ -14,4 +14,6 @@ public interface GroupeRepository extends JpaRepository<Groupe,Long> {
     List<Groupe> findGroupeByAnnee(Year year);
 
     Groupe findGroupesByIdGroupe(Long idGroupe);
+
+
 }

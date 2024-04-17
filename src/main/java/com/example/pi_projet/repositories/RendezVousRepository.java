@@ -17,7 +17,7 @@ public interface RendezVousRepository extends JpaRepository<RendezVous,Long> {
 
     List<RendezVous> findRendezVousByGroupe_IdGroupe (Long idGroupe);
 
-
+  RendezVous findByIdRdv(Long idRdv);
 
     @Query("SELECT r.Heure FROM RendezVous r WHERE r.date = :date")
     List<String> findHeureByDate(@Param("date") LocalDate date);

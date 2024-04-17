@@ -22,4 +22,6 @@ public interface IRendezVousService {
     List<RendezVous> LISTRdvByGroupe (Long idGroupe);
 
     List<String> heuresDisponibles(LocalDate date);
+
+    RendezVous AssignRdvToGroupe(Long idRdv , Long idGroupe);
 }

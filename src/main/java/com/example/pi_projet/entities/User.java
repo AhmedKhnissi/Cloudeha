@@ -4,9 +4,6 @@ package com.example.pi_projet.entities;
 
 
 import jakarta.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import lombok.*;
 
 
@@ -23,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class User implements UserDetails{
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -63,40 +60,6 @@ public class User implements UserDetails{
 
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(userRole.getRole().name());
-//        return Collections.singletonList(authority);
-        return List.of(new SimpleGrantedAuthority(userRole.getRole().name()));
-    }
 
-    @Override
-    public String getPassword() {
-        return MDP;
-    }
 
-    @Override
-    public String getUsername() {
-        return nom;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !locked;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
 }
