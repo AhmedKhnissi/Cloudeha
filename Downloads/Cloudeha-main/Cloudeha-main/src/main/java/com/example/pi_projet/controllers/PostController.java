@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/Post")
+@CrossOrigin
 public class PostController {
     IPostService postService;
     @PostMapping("/addPost/{contenu}/{idGroupe}/{idUser}")
@@ -31,9 +32,9 @@ public class PostController {
         postService.deletePost(idPost);
     }
 
-    @GetMapping("/retrieveAllPosts")
-    public List<Post> retrieveAll(){
-         List<Post> postList = (List<Post>) postService.retrievePosts();
-         return postList;
+    @GetMapping("/retrieveAllPosts/{idGroupe}")
+    public List<Post> retrieveAll(@PathVariable Long idGroupe){
+        return postService.retrievePosts(idGroupe);
     }
+
 }

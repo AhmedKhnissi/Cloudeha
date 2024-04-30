@@ -24,6 +24,9 @@ public class PostImplementation implements IPostService{
         Post post= new Post();
         post.setGroupePosts(groupe);
         post.setUser_post(user);
+        post.setNom(user.getNom());
+        post.setPrenom(user.getPrenom());
+        post.setContenu(contenu);
         return postRepository.save(post);
     }
 
@@ -35,7 +38,7 @@ public class PostImplementation implements IPostService{
 
     @Override
     public void deletePost(Long idPost) {
-    Post post = postRepository.findPostsByIdPost(idPost);
+    Post post = postRepository.findPostByIdPost(idPost);
     postRepository.delete(post);
     }
 
@@ -45,7 +48,8 @@ public class PostImplementation implements IPostService{
     }
 
     @Override
-    public List<Post> retrievePosts() {
-        return postRepository.findAll();
+    public List<Post> retrievePosts(Long idGroupe) {
+        List<Post> postList;
+        return postList = postRepository.findPostsByGroupePosts_IdGroupe(idGroupe);
     }
 }

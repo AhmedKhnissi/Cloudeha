@@ -1,6 +1,5 @@
 package com.example.pi_projet.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,26 +12,24 @@ import java.io.Serializable;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Invitation implements Serializable {
+@NoArgsConstructor
+public class ResponsePost implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idInvitation")
-    private Long idInvitation;
+    @Column(name = "idResponse")
+    private Long idResponse;
     private String nom;
-    private String prenom;
-    private Long UserID;
+    private  String prenom;
+    private String contenu;
+
+
     @ManyToOne
     @JsonIgnore
-    private Groupe groupeInvitation;
+    private User user_ResponsePost;
 
-
-
-    @OneToOne
+    @ManyToOne
     @JsonIgnore
-    private User userInvitation;
-
-
+    private Post post;
 }

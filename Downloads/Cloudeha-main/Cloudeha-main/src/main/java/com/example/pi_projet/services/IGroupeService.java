@@ -21,10 +21,12 @@ public interface IGroupeService {
 
     List<Groupe> ListGroupeByAnneScolaireI (Year Annee_Scolaire);
 
+   // Groupe AssignUserToGroupeByInvitation(Long idInvitation);
+
     Groupe AssignUserTOGroupe(Long idUser, Long idGroupe);
 
-
-
+    @Scheduled(cron = "0 * * * * * ")
+    void AssignTuteurToGroupe();
 
     @Scheduled(cron = "0 * * * * * ")
     void calculateTotalScore();

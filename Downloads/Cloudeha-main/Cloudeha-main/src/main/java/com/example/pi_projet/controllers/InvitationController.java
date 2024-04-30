@@ -3,6 +3,7 @@ package com.example.pi_projet.controllers;
 import com.example.pi_projet.entities.Invitation;
 import com.example.pi_projet.services.IInvitationService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/Invitation")
+@CrossOrigin
 public class InvitationController {
     IInvitationService invitationService;
 
@@ -20,16 +22,18 @@ public class InvitationController {
           return invitationService.addInvitation(idUser,idGroupe);
     }
 
-    @DeleteMapping("/deletePost/{idInvitation}")
-    public void  deletePost(@PathVariable Long idInvitation)
-    {
-         invitationService.deleteInvitation(idInvitation);
+    @PostMapping("/deleteInvitation/{idInvitation}")
+    public void deleteInvitation(@PathVariable Long idInvitation) {
+        // Logique de suppression de l'invitation en utilisant l'ID fourni
+        invitationService.deleteInvitation(idInvitation);
+
+        // Retourner une réponse de succès
+
     }
 
     @GetMapping("/retrieveAllInvitation/{idGroupe}")
     public List<Invitation> retrieveAll (@PathVariable Long idGroupe){
-        List<Invitation> invitationList = invitationService.retrieveInvitations(idGroupe);
-    return invitationList;
+    return invitationService.retrieveInvitations(idGroupe);
     }
 
 }

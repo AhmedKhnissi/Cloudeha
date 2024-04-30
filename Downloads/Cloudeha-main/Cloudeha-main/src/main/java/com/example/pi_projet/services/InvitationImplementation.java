@@ -26,6 +26,8 @@ public class InvitationImplementation implements IInvitationService{
         List<Invitation> invitationList = invitationRepository.findAll();
         invitation.setUserInvitation(user);
         invitation.setGroupeInvitation(groupe);
+        invitation.setNom(user.getNom());
+        invitation.setPrenom(user.getPrenom());
         if (!(invitationList.contains(invitation)))
           invitationRepository.save(invitation);
         return invitation;
@@ -37,9 +39,19 @@ public class InvitationImplementation implements IInvitationService{
         invitationRepository.deleteById(idInvitation);
     }
 
+
+
     @Override
     public List<Invitation> retrieveInvitations(Long idGroupe) {
-        return invitationRepository.findInvitationsByGroupeInvitation_IdGroupe(idGroupe);
+        List<Invitation> invitations = invitationRepository.findInvitationsByGroupeInvitation_IdGroupe(idGroupe);
+
+        // Parcourir les invitations et charger les informations de l'utilisateur
+        for (Invitation invitation : invitations) {
+            Long idUtilisateur = invitation.getUserInvitation().getId();
+            invitation.setUserID(idUtilisateur); // Ajouter l'ID de l'utilisateur dans l'objet Invitation
+        }
+
+        return invitations;
     }
 
 

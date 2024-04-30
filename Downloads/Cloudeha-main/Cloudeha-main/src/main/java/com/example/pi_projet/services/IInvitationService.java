@@ -3,6 +3,7 @@ package com.example.pi_projet.services;
 
 import com.example.pi_projet.entities.Groupe;
 import com.example.pi_projet.entities.Invitation;
+import com.example.pi_projet.entities.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

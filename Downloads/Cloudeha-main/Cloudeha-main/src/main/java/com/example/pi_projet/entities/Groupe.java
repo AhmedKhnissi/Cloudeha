@@ -23,15 +23,24 @@ public class Groupe implements Serializable {
     @Column(name = "idGroupe")
     private Long idGroupe;
     private String Nom_Groupe;
+
+    //esmou w lakabou
     private String Nom_Tuteur;
     private float Total_Score;
+
+    //maabi wla la
     private String Statut;
+
+    //etat bech nehsbou beha nombre mtaaa lusers fel groupe
     private int Etat;
 
-    // @Enumerated(EnumType.STRING)
+    private String Sujet ;
+
+
     private Year annee;
 
     @OneToMany(mappedBy = "groupeInvitation")
+    @JsonIgnore
     private Set<Invitation> invitationsGroupe;
 
     @Enumerated(EnumType.STRING)
@@ -39,10 +48,12 @@ public class Groupe implements Serializable {
 
 
     @ManyToMany(mappedBy = "groupeSet")
+    @JsonIgnore
     private Set<User> userSet;
 
 
     @OneToMany(mappedBy = "groupePosts")
+    @JsonIgnore
     private Set<Post> posts;
 
 

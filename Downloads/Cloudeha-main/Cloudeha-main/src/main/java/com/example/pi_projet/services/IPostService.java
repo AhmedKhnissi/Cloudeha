@@ -13,6 +13,6 @@ public interface IPostService {
     void deletePost(Long idPost);
 
     Post retrieveSpecPost(Long idPost);
-    List<Post> retrievePosts ();
+    List<Post> retrievePosts (Long idGroupe);
 
 }

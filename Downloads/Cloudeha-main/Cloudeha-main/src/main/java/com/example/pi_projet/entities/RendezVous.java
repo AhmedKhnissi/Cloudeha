@@ -1,5 +1,6 @@
 package com.example.pi_projet.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,6 +28,7 @@ public class RendezVous implements Serializable {
     private float Points ;
 
     @ManyToOne
+    @JsonIgnore
     private Groupe groupe;
 
 }

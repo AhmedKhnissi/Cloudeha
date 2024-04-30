@@ -3,14 +3,12 @@ package com.example.pi_projet.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 
 //import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -50,6 +48,10 @@ public class User {
     private Set<Groupe> groupeSet;
     @OneToMany(mappedBy = "user_post")
     private Set<Post> posts;
+
+    @OneToMany(mappedBy = "user_ResponsePost")
+    @JsonIgnore
+    private Set<ResponsePost> ResponsePosts;
 
     private boolean locked = false;
     private boolean enabled = false;

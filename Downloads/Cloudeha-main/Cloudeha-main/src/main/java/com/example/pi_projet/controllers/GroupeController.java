@@ -13,6 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin
 @AllArgsConstructor
 @RequestMapping("/Groupe")
 public class GroupeController {
